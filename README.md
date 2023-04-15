@@ -65,6 +65,39 @@ ON o.status=os.order_status_id;
 
 ---------------------------
 
+SELECT p.product_id, p.name, oi.quantity 
+
+FROM products p
+
+LEFT JOIN order_items oi
+
+ON p.product_id=oi.product_id
+
+*doing an outer join between 'products' and 'order_items' tables to see how many of each product has been orderd regardless of whether they've been ordered or not*
+
+----------------------------------
+
+SELECT  o.order_id, o.order_date, c.first_name, sh.name AS shipper, os.name AS status
+
+FROM orders o
+
+JOIN customers c
+
+ON o.customer_id=c.customer_id
+
+LEFT JOIN shippers sh
+
+ON o.shipper_id=sh.shipper_id
+
+JOIN order_statuses os
+
+ON o.status=os.order_status_id
+
+*outer and inner joining multiple tables to see all the orders, their order dates, who ordered, and whether or not the order has been shipped, which includes the shipper's name if it has been shipped*
+
+-----------------------
+
+
 
 
 
